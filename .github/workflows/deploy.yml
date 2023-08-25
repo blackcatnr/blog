@@ -6,9 +6,9 @@ on:
       - main
 
 env:
-  GIT_USER: WYinhui  # yh  WYinhui
-  GIT_EMAIL: wyh64924@163.com
-  DEPLOY_REPO: WYinhui/WYinhui.github.io
+  GIT_USER: WYinhui  # yh  WYinhuis
+  GIT_EMAIL: 2449891740@qq.com
+  DEPLOY_REPO: blackcatnr/blackcatnr.github.io
   DEPLOY_BRANCH: main
 
 jobs:
