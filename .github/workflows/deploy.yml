@@ -1,0 +1,69 @@
+name: hexo-blog-deploy
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GIT_USER: WYinhui  # yh  WYinhui
+  GIT_EMAIL: wyh64924@163.com
+  DEPLOY_REPO: WYinhui/WYinhui.github.io
+  DEPLOY_BRANCH: main
+
+jobs:
+  build:
+    name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node_version: [19.x]
+
+    steps:
+      - name: 1.Checkout
+        uses: actions/checkout@v2
+
+      - name: 2.Checkout deploy repo
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ env.DEPLOY_REPO }}
+          ref: ${{ env.DEPLOY_BRANCH }}
+          path: .deploy_git
+
+      - name: 3.Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node_version }}
+
+      - name: 4.Configuration environment
+        env:
+          HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
+        run: |
+          sudo timedatectl set-timezone "Asia/Shanghai"
+
+          # 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).
+          mkdir -p ~/.ssh/
+          echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+          # 设置用户名和邮箱，否则提示 Please tell me who you are.
+          git config --global user.name $GIT_USER
+          git config --global user.email $GIT_EMAIL
+          # cp _config.fluid.yml themes/fluid/_config.yml # add
+
+      - name: 5.Install dependencies
+        run: |
+          npm install
+          npm install hexo-deployer-git --save
+          # npm install hexo-asset-image --save
+          # 全局搜索插件  
+          # !!! 找了好久的bug, 页面没自动触发更新是因为没导这个，以及没clean
+          npm install hexo-generator-searchdb --save
+          npm i -g hexo-cli
+          npm i
+
+      - name: 6.Deploy hexo
+        run: 
+          hexo clean && hexo generate && hexo deploy
