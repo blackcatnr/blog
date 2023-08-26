@@ -23,7 +23,7 @@ subtitle:
   showCursor: true # 是否显示光标
 
 # 网站图标和侧边栏logo
-favicon: /favicon.ico
+favicon: /082617432833_0cover2.ico
 logo: /favicon.ico
 
 # 封面配置
@@ -31,7 +31,7 @@ logo: /favicon.ico
 cover:
   enable: true
   path: /images/123.jpg # /source/images目录下附送多张美图，可更换
-  logo: false #/images/ayer.svg，如果不要直接设置成false
+  logo: true #/images/ayer.svg，如果不要直接设置成false
 
 # 页面顶部进度条
 progressBar: true
