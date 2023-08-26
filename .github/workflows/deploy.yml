@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  GIT_USER: blackcatnr  # yh  WYinhuis
+  GIT_USER: xiyangyang # blackcatnr  # yh  WYinhuis
   GIT_EMAIL: 2449891740@qq.com
   DEPLOY_REPO: blackcatnr/blackcatnr.github.io
   DEPLOY_BRANCH: main
