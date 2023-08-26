@@ -2,20 +2,21 @@
 menu:
   主页: /
   # C++: /archives
-  分类: /categories
-  # 标签: /tags
-#  旅行: /tags/旅行/
-#  摄影: http://shenyu-vip.lofter.com
-#  友链: /friends
+  学习: /categories
+  工作：/categories
+  标签: /tags
+  旅行: /tags/旅行/
+  摄影: http://shenyu-vip.lofter.com
+  #  友链: /friends
   # 关于我: /2019/about
 
 # 站点次标题和打字动效
 # https://github.com/mattboldt/typed.js
 subtitle:
   enable: true # 是否开启动效
-  text: 做你说过的，说你能做的 # 显示的文字
-  text2: Do what you said, say what you can do. # 滚动播放，如果不需要可以留空
-  text3: # 最多支持三段文字
+  text: 好好学习，天天向上！ # 显示的文字
+  text2: 学如逆水行舟，不进则退！ # 滚动播放，如果不需要可以留空
+  text3: Never forget to say “thanks”.  # 最多支持三段文字
   startDelay: 1000 # 延迟时间
   typeSpeed: 300 # 打字速度
   loop: true # 是否循环
@@ -30,7 +31,7 @@ logo: /favicon.ico
 # enable-是否启用封面；path-封面背景图；logo-封面logo
 cover:
   enable: true
-  path: /images/cover1.jpg # /source/images目录下附送多张美图，可更换
+  path: /images/123.jpg # /source/images目录下附送多张美图，可更换
   logo: false #/images/ayer.svg，如果不要直接设置成false
 
 # 页面顶部进度条
@@ -112,7 +113,7 @@ mouse:
   path: /images/mouse.cur
 
 # 鼠标点击效果：0-关闭，1-爱心，2-爆炸烟花，3-粒子烟花
-click_effect: 0
+click_effect: 3
 
 # 页面宽度自定义（不建议修改，可能造成布局混乱），article_width文章宽度，sidebar_width侧边栏宽度
 layout:
@@ -127,7 +128,7 @@ github:
 
 # 网易云音乐插件
 music:
-  enable: false
+  enable: true
   # 播放器尺寸类型(1：小尺寸、2：大尺寸)
   type: 1
   id: 22707008 # 网易云分享的音乐ID(更换音乐请更改此配置项)
@@ -199,7 +200,7 @@ friends_link:
     img: /images/hexo-tag-chart.png
 
 # 评论：1、Valine(推荐)；2、Gitalk；3、Twikoo;
-
+s
 # 1、Valine[一款快速、简洁且高效的无后端评论系统](https://github.com/xCss/Valine)
 # 启用Valine必须先创建leancloud应用， 获取 id|key 填入即可
 leancloud:
