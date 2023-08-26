@@ -2,11 +2,12 @@
 menu:
   主页: /
   # C++: /archives
-  分类: /categories
-  # 标签: /tags
-#  旅行: /tags/旅行/
-#  摄影: http://shenyu-vip.lofter.com
-#  友链: /friends
+  学习: /categories
+  工作：/categories
+  标签: /tags
+  旅行: /tags/旅行/
+  摄影: http://shenyu-vip.lofter.com
+  #  友链: /friends
   # 关于我: /2019/about
 
 # 站点次标题和打字动效
@@ -24,7 +25,7 @@ subtitle:
 
 # 网站图标和侧边栏logo
 favicon: /082617432833_0cover2.ico
-logo: /favicon.ico
+logo: /082617432833_0cover2.ico
 
 # 封面配置
 # enable-是否启用封面；path-封面背景图；logo-封面logo
