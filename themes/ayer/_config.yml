@@ -16,7 +16,7 @@ subtitle:
   enable: true # 是否开启动效
   text: 好好学习，天天向上！ # 显示的文字
   text2: 学如逆水行舟，不进则退！ # 滚动播放，如果不需要可以留空
-  text3: Never forget to say “thanks”.# 最多支持三段文字
+  text3: Never forget to say “thanks”.  # 最多支持三段文字
   startDelay: 1000 # 延迟时间
   typeSpeed: 300 # 打字速度
   loop: true # 是否循环
@@ -24,8 +24,8 @@ subtitle:
   showCursor: true # 是否显示光标
 
 # 网站图标和侧边栏logo
-favicon: /082617432833_0cover2.ico
-logo: /082617432833_0cover2.ico
+favicon: /favicon.ico
+logo: /favicon.ico
 
 # 封面配置
 # enable-是否启用封面；path-封面背景图；logo-封面logo
