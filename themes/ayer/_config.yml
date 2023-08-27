@@ -13,9 +13,9 @@ menu:
 # https://github.com/mattboldt/typed.js
 subtitle:
   enable: true # 是否开启动效
-  text: 做你说过的，说你能做的 # 显示的文字
-  text2: Do what you said, say what you can do. # 滚动播放，如果不需要可以留空
-  text3: # 最多支持三段文字
+  text: 不要着急，最好的总会在最不经意的时候出现。 # 显示的文字
+  text2: Don't try to hard,the best things come when you least expect them to.  # 滚动播放，如果不需要可以留空
+  text3: Optimistic! # 最多支持三段文字
   startDelay: 1000 # 延迟时间
   typeSpeed: 300 # 打字速度
   loop: true # 是否循环
@@ -30,7 +30,7 @@ logo: /favicon.ico
 # enable-是否启用封面；path-封面背景图；logo-封面logo
 cover:
   enable: true
-  path: /images/cover1.jpg # /source/images目录下附送多张美图，可更换
+  path: /images/123.jpg # /source/images目录下附送多张美图，可更换
   logo: false #/images/ayer.svg，如果不要直接设置成false
 
 # 页面顶部进度条
