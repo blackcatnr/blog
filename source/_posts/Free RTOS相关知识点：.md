@@ -1,47 +1,21 @@
-1. FreeRTOS支持的三种调度方式：
-	（1）抢占式调度：主要是针对优先级不同的任务，每一个任务都有一个优先级，优先级高的任务可以抢占优先级低的任务。
-	（2）时间片调度：主要是针对优先级相同的任务，当多个任务的优先级相同时，任务调度器会在每一个时钟节拍到的时候切换任务。（时间片1ms）在FreeRTOS中，一个时间片就是SysTick中断周期。更改时间片的大小，可由更改滴答定时器中断周期去实现。
+---
+title: ### [挂起：挂起的任务类似暂停，可恢复（解挂）；删除任务，无法恢复。被挂起的任务绝不会得到CPU的使用权，不管该任务具有什么优先级。vTaskSuspend() 函数调用时需要将宏INCLUDE_vTaskSuspend() 配置成1。](#context.1)<a name="section.1"> </a>
+date: 2023-08-27
+tags: ['星海']
+categories: 星海
+id: ### [挂起：挂起的任务类似暂停，可恢复（解挂）；删除任务，无法恢复。被挂起的任务绝不会得到CPU的使用权，不管该任务具有什么优先级。vTaskSuspend() 函数调用时需要将宏INCLUDE_vTaskSuspend() 配置成1。](#context.1)<a name="section.1"> </a>
+---
+<!-- more -->
+##### [挂起：挂起的任务类似暂停，可恢复（解挂）；删除任务，无法恢复。被挂起的任务绝不会得到CPU的使用权，不管该任务具有什么优先级。vTaskSuspend() 函数调用时需要将宏INCLUDE_vTaskSuspend() 配置成1。](#context.1)<a name="section.1"> </a>
+# 目录
+      - [挂起：挂起的任务类似暂停，可恢复（解挂）；删除任务，无法恢复。被挂起的任务绝不会得到CPU的使用权，不管该任务具有什么优先级。vTaskSuspend() 函数调用时需要将宏INCLUDE_vTaskSuspend() 配置成1。](#section.1)<a name="context.1"> </a>
+      - [恢复：恢复被挂起的任务。==任务恢复就是让挂起的任务重新进入就绪状态，恢复的任务会保留挂起前的状态信息，在恢复时根据挂起时的状态继续运行。vTaskResume() 函数调用时需要将宏INCLUDE_vTaskResume() 配置成1==](#section.2)<a name="context.2"> </a>
+        - [FromISR：==带FromISR后缀是在中断函数中专用的API==。无论调用过多少次的任务挂起vTaskSuspend() ，只需要调用一次vTaskResumeFromISR()  即可解挂。==使用该函数时，需要在FreeRTOSconfig.h中把INCLUDE_vTaskSuspend()和INCLUDE_vTaskResumeFromISR()  都定义为1。==vTaskResumeFromISR()函数不能用于任务和中断的同步（因为中断随时可能出现）。](#section.3)<a name="context.3"> </a>
+------------------------------------------------  
 
-	补充：时间片：同等优先级的任务轮流的享有相同的CPU时间。在FreeRTOS中，一个时间片就等于一个SysTick中断周期
+##### [恢复：恢复被挂起的任务。==任务恢复就是让挂起的任务重新进入就绪状态，恢复的任务会保留挂起前的状态信息，在恢复时根据挂起时的状态继续运行。vTaskResume() 函数调用时需要将宏INCLUDE_vTaskResume() 配置成1==](#context.2)<a name="section.2"> </a>
 
-	（3）协程式调度：当前执行的任务会一直执行，同时高优先级的任务不会抢占低优先级的任务。
-
-2. FreeRTOS中任务共存在四种状态：
-	（1）运行态：正在执行的任务，该任务就处于运行态，注意在STM32中，同一时间仅有一个任务处于运行态。
-	（2）就绪态：如果该任务已经能够被执行，但当前还未被执行，那么该任务处于就绪态。
-	（3）阻塞态：如果一个任务因为延时或等待外部事件发生，那么这个任务就处于阻塞态。
-	（4）挂起态：类似暂停，需要调用函数vTaskSuspend()进入挂起态，调用解挂vTaskResume()才可以进入到就绪态。==注意：任务处于挂起态的时候经过解挂不会直接进入到运行态，只会进入到就绪态。同样阻塞态也不会直接进行到运行态，会进入到就绪态。仅就绪态可转变为运行态，其他状态的任务想运行，必须先转为就绪态。==
-
-3. 系统配置文件：
-	FreeRTOSConfig.h 配置文件作用：对FreeRTOS进行功能配置和裁剪，以及API函数的使能。
-	（1）“INCLUDE”： 配置FreeRTOS中可选的API
-	（2）“config” ：完成FreeRTOS的功能配置和裁剪
-	（3）其他的配置项：完成PendSV（中断）宏定义、SVC宏定义
-
-4. 任务的创建和删除的API函数
-	       ==任务的创建和删除的本质就是调用FreeRTOS的API函数==
-	       两种创建方式：（1）==动态方式创建==（xTaskCreate）———任务的任务控制块以及任务的栈空间所需的内存，==均由FreeRTOS从FreeRTOS管理的堆中分配==。（2）==静态方式创建==（xTaskCreateStatic）———任务的任务控制块以及任务的栈空间所需的内存，==需要用户分配提供。==任务删除函数（xTaskToDelete）待删除任务的任务句柄，用于删除已被创键的任务，被删除的任务将从就绪态任务列表、阻塞态任务列表、挂起态任务列表和事件列表中移除。
-
-	静态创建任务流程：（1）使用静态创建任务，需要将宏configSUPPORT_STATIC_ALLOCATION配置成1
-	                                  （2）定义空闲任务和定时器任务的任务堆栈及TCB
-	                                  （3）实现两个接口函数vApplicationGetldleTaskMemory()、vApplicationGetTimerTaskMemory()
-	                                  （4） 编写任务函数
-
-	删除任务流程：        （1）使用删除任务函数，需要将宏INCLUDE_vTask Delete配置为1 
-
-	​                                   （2）入口参数输入需要删除的任务句柄（NULL代表删除本身）。删除任务自身，需要先添加等待删除列表，内     存释放将放在空闲任务执行 ，空闲任务会负责释放被删除任务中由系统分配的内存，但是由用户在任务删除前申请的内存，则需要由用户在任务被删除前提前释放，否则会导致内存泄漏。
-
-5. 任务的挂起与恢复的API函数
-
-	​      三个API函数：（1）vTaskSuspend()                     ———挂起任务    
-	​                               （2）vTaskResume()                      ———恢复被挂起的任务
-	​                               （3）vTaskResumeFromISR()       ———在中断中恢复被挂起的任务
-
-	#####     挂起：挂起的任务类似暂停，可恢复（解挂）；删除任务，无法恢复。被挂起的任务绝不会得到CPU的使用权，不管该任务具有什么优先级。vTaskSuspend() 函数调用时需要将宏INCLUDE_vTaskSuspend() 配置成1。
-
-	#####    恢复：恢复被挂起的任务。==任务恢复就是让挂起的任务重新进入就绪状态，恢复的任务会保留挂起前的状态信息，在恢复时根据挂起时的状态继续运行。vTaskResume() 函数调用时需要将宏INCLUDE_vTaskResume() 配置成1==
-
-	######  FromISR：==带FromISR后缀是在中断函数中专用的API==。无论调用过多少次的任务挂起vTaskSuspend() ，只需要调用一次vTaskResumeFromISR()  即可解挂。==使用该函数时，需要在FreeRTOSconfig.h中把INCLUDE_vTaskSuspend()和INCLUDE_vTaskResumeFromISR()  都定义为1。==vTaskResumeFromISR()函数不能用于任务和中断的同步（因为中断随时可能出现）。
+###### [FromISR：==带FromISR后缀是在中断函数中专用的API==。无论调用过多少次的任务挂起vTaskSuspend() ，只需要调用一次vTaskResumeFromISR()  即可解挂。==使用该函数时，需要在FreeRTOSconfig.h中把INCLUDE_vTaskSuspend()和INCLUDE_vTaskResumeFromISR()  都定义为1。==vTaskResumeFromISR()函数不能用于任务和中断的同步（因为中断随时可能出现）。](#context.3)<a name="section.3"> </a>
 
 	​    vTaskSuspend(TaskHandle_t  vTaskSuspend) 形参为 vTaskSuspend，待挂起任务的任务句柄。注意：当传入的参数为NULL，则代表挂起任务自身（当前运行的任务）。
 	​    vTaskResume(TaskHandle_t  vTaskResume) 形参为vTaskResume，恢复指定任务的任务句柄。注意：任务无论被挂起多少次，只需要调用vTaskResume()恢复一次，就可以继续运行。且被恢复的任务进入到就绪态。

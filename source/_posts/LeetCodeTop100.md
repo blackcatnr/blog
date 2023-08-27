@@ -7,17 +7,15 @@ id: LeetCodeTop100
 ---
 
 # 力扣TOP100
-
 # 目录
-
-- [哈希](#section.2)<a name="context.2"> </a>
-- [双指针](#section.3)<a name="context.3"> </a>
-- [滑动窗口](#section.4)<a name="context.4"> </a>
-- [子串](#section.5)<a name="context.5"> </a>
-- [数组](#section.6)<a name="context.6"> </a>
-- [矩阵](#section.7)<a name="context.7"> </a>
-- [链表](#section.8)<a name="context.8"> </a>
-------------------------------------------------
+- [哈希](#section.1)<a name="context.1"> </a>
+- [双指针](#section.2)<a name="context.2"> </a>
+- [滑动窗口](#section.3)<a name="context.3"> </a>
+- [子串](#section.4)<a name="context.4"> </a>
+- [数组](#section.5)<a name="context.5"> </a>
+- [矩阵](#section.6)<a name="context.6"> </a>
+- [链表](#section.7)<a name="context.7"> </a>
+------------------------------------------------  
 
 <!-- more -->
 
@@ -25,7 +23,7 @@ id: LeetCodeTop100
 
 
 
-## [哈希](#context.2)<a name="section.2"> </a>
+## [哈希](#context.1)<a name="section.1"> </a>
 
 [1. 两数之和 - 力扣（LeetCode）](https://leetcode.cn/problems/two-sum/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -172,7 +170,7 @@ public:
 
 
 
-## [双指针](#context.3)<a name="section.3"> </a>
+## [双指针](#context.2)<a name="section.2"> </a>
 
 [283. 移动零 - 力扣（LeetCode）](https://leetcode.cn/problems/move-zeroes/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -371,7 +369,7 @@ public:
 
 
 
-## [滑动窗口](#context.4)<a name="section.4"> </a>
+## [滑动窗口](#context.3)<a name="section.3"> </a>
 
 [3. 无重复字符的最长子串 - 力扣（LeetCode）](https://leetcode.cn/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -469,7 +467,7 @@ public:
 
 
 
-## [子串](#context.5)<a name="section.5"> </a>
+## [子串](#context.4)<a name="section.4"> </a>
 
 [560. 和为 K 的子数组 - 力扣（LeetCode）](https://leetcode.cn/problems/subarray-sum-equals-k/description/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -693,7 +691,7 @@ public:
 
 
 
-## [数组](#context.6)<a name="section.6"> </a>
+## [数组](#context.5)<a name="section.5"> </a>
 
 [53. 最大子数组和 - 力扣（LeetCode）](https://leetcode.cn/problems/maximum-subarray/description/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -798,7 +796,7 @@ public:
 
 
 
-## [矩阵](#context.7)<a name="section.7"> </a>
+## [矩阵](#context.6)<a name="section.6"> </a>
 
 [73. 矩阵置零 - 力扣（LeetCode）](https://leetcode.cn/problems/set-matrix-zeroes/description/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -959,7 +957,7 @@ public:
 
 
 
-## [链表](#context.8)<a name="section.8"> </a>
+## [链表](#context.7)<a name="section.7"> </a>
 
 [160. 相交链表 - 力扣（LeetCode）](https://leetcode.cn/problems/intersection-of-two-linked-lists/description/?envType=study-plan-v2&envId=top-100-liked)
 
