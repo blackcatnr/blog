@@ -6,7 +6,9 @@ categories: 星海
 id: 1.markdown语法
 ---
 <!-- more -->
-# 1.markdown语法
+
+# markdown语法
+
 # 目录
 - [1.1快捷键](#section.1)<a name="context.1"> </a>
 - [1.2文字(文本)显示](#section.2)<a name="context.2"> </a>
@@ -15,7 +17,7 @@ id: 1.markdown语法
 - [2.3任务列表](#section.5)<a name="context.5"> </a>
 - [4.1行内代码](#section.6)<a name="context.6"> </a>
 - [4.2代码块](#section.7)<a name="context.7"> </a>
-------------------------------------------------  
+------------------------------------------------
 ## [1.1快捷键](#context.1)<a name="section.1"> </a>
 
 | 名称               | 语法                                     | 快捷键                                                       |
@@ -109,9 +111,9 @@ id: 1.markdown语法
 开始<sup>123hi你好</sup>
 开始<sub>321hi你好</sub>
 
-# 2.列表
+## 2.列表
 
-## [2.1无序列表](#context.3)<a name="section.3"> </a>
+### [2.1无序列表](#context.3)<a name="section.3"> </a>
 
 代码：
 
@@ -137,7 +139,7 @@ id: 1.markdown语法
 
 	快捷键：ctrl+shift+]
 
-## [2.2有序列表](#context.4)<a name="section.4"> </a>
+### [2.2有序列表](#context.4)<a name="section.4"> </a>
 
 代码：
 
@@ -157,22 +159,22 @@ id: 1.markdown语法
 4. 第四个标题
 	快捷键为ctrl+shift+[
 
-## [2.3任务列表](#context.5)<a name="section.5"> </a>
+### [2.3任务列表](#context.5)<a name="section.5"> </a>
 
 	代码：
-
+	
 	`- [ ]吃早饭`
-
+	
 	`- [x]背单词`
 	效果：
-
+	
 	- [ ] 吃早饭
-
+	
 	- [ ] 背单词
 
 快捷键：ctrl+shift+x
 
-# 3.区块显示
+## 3.区块显示
 
 代码：
 
@@ -188,9 +190,9 @@ id: 1.markdown语法
 >
 >> > 这是最内层代码块
 
-# 代码显示
+## 代码显示
 
-## [4.1行内代码](#context.6)<a name="section.6"> </a>
+### [4.1行内代码](#context.6)<a name="section.6"> </a>
 
 代码：
 
@@ -198,7 +200,7 @@ id: 1.markdown语法
 
 快捷键：ctrl+shift+`
 
-## [4.2代码块](#context.7)<a name="section.7"> </a>
+### [4.2代码块](#context.7)<a name="section.7"> </a>
 
 ```
 //输出 cout
@@ -207,7 +209,7 @@ id: 1.markdown语法
 
 快捷键：ctrl+shift+K
 
-# 5.链接
+## 5.链接
 
 代码：
 
@@ -221,7 +223,7 @@ www.baidu,com
 [百度](https://www.baidu.com)
 [百度])(https://www.baidu.com "https://www.baidu.com")
 
-# 6.脚注
+## 6.脚注
 
 对文本进行解释说明
 代码：
@@ -240,7 +242,7 @@ c[^②]
 [^①]:这是一种编程语言
 [^②]: 这是一种简单编程语言
 
-# 7.插入图片
+## 7.插入图片
 
 代码：
 
@@ -253,7 +255,7 @@ c[^②]
 
 快捷键：ctrl+shift+I
 
-# 8.表格
+## 8.表格
 
 快捷键：
 
@@ -261,11 +263,11 @@ c[^②]
 在最后一行添加一行表格：ctrl+enter
 在一行表格里面再添加一行：shift+enter
 
-# 9.流程图
+## 9.流程图
 
 
 
-# 10.表情符号
+## 10.表情符号
 
 代码：
 
