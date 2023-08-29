@@ -1,6 +1,17 @@
-
-
+---
+title: FreeRTOS相关知识点
+date: 2023-08-29
+tags: ['星海']
+categories: 星海
+id: FreeRTOS相关知识点
+---
+<!-- more -->
 # FreeRTOS相关知识点
+# 目录
+      - [挂起：挂起的任务类似暂停，可恢复（解挂）；删除任务，无法恢复。被挂起的任务绝不会得到CPU的使用权，不管该任务具有什么优先级。vTaskSuspend() 函数调用时需要将宏INCLUDE_vTaskSuspend() 配置成1。](#section.1)<a name="context.1"> </a>
+      - [恢复：恢复被挂起的任务。==任务恢复就是让挂起的任务重新进入就绪状态，恢复的任务会保留挂起前的状态信息，在恢复时根据挂起时的状态继续运行。vTaskResume() 函数调用时需要将宏INCLUDE_vTaskResume() 配置成1==](#section.2)<a name="context.2"> </a>
+        - [FromISR：==带FromISR后缀是在中断函数中专用的API==。无论调用过多少次的任务挂起vTaskSuspend() ，只需要调用一次vTaskResumeFromISR()  即可解挂。==使用该函数时，需要在FreeRTOSconfig.h中把INCLUDE_vTaskSuspend()和INCLUDE_vTaskResumeFromISR()  都定义为1。==vTaskResumeFromISR()函数不能用于任务和中断的同步（因为中断随时可能出现）。](#section.3)<a name="context.3"> </a>
+------------------------------------------------  
 
 ​    FreeRTOS支持的三种调度方式：
   （1）抢占式调度：主要是针对优先级不同的任务，每一个任务都有一个优先级，优先级高的任务可以抢占优先级低的任务。
@@ -42,11 +53,11 @@
   ​                               （2）vTaskResume()                      ———恢复被挂起的任务
   ​                               （3）vTaskResumeFromISR()       ———在中断中恢复被挂起的任务
 
-  #####     挂起：挂起的任务类似暂停，可恢复（解挂）；删除任务，无法恢复。被挂起的任务绝不会得到CPU的使用权，不管该任务具有什么优先级。vTaskSuspend() 函数调用时需要将宏INCLUDE_vTaskSuspend() 配置成1。
+##### [挂起：挂起的任务类似暂停，可恢复（解挂）；删除任务，无法恢复。被挂起的任务绝不会得到CPU的使用权，不管该任务具有什么优先级。vTaskSuspend() 函数调用时需要将宏INCLUDE_vTaskSuspend() 配置成1。](#context.1)<a name="section.1"> </a>
 
-  #####    恢复：恢复被挂起的任务。==任务恢复就是让挂起的任务重新进入就绪状态，恢复的任务会保留挂起前的状态信息，在恢复时根据挂起时的状态继续运行。vTaskResume() 函数调用时需要将宏INCLUDE_vTaskResume() 配置成1==
+##### [恢复：恢复被挂起的任务。==任务恢复就是让挂起的任务重新进入就绪状态，恢复的任务会保留挂起前的状态信息，在恢复时根据挂起时的状态继续运行。vTaskResume() 函数调用时需要将宏INCLUDE_vTaskResume() 配置成1==](#context.2)<a name="section.2"> </a>
 
-  ######  FromISR：==带FromISR后缀是在中断函数中专用的API==。无论调用过多少次的任务挂起vTaskSuspend() ，只需要调用一次vTaskResumeFromISR()  即可解挂。==使用该函数时，需要在FreeRTOSconfig.h中把INCLUDE_vTaskSuspend()和INCLUDE_vTaskResumeFromISR()  都定义为1。==vTaskResumeFromISR()函数不能用于任务和中断的同步（因为中断随时可能出现）。
+###### [FromISR：==带FromISR后缀是在中断函数中专用的API==。无论调用过多少次的任务挂起vTaskSuspend() ，只需要调用一次vTaskResumeFromISR()  即可解挂。==使用该函数时，需要在FreeRTOSconfig.h中把INCLUDE_vTaskSuspend()和INCLUDE_vTaskResumeFromISR()  都定义为1。==vTaskResumeFromISR()函数不能用于任务和中断的同步（因为中断随时可能出现）。](#context.3)<a name="section.3"> </a>
 
   ​    vTaskSuspend(TaskHandle_t  vTaskSuspend) 形参为 vTaskSuspend，待挂起任务的任务句柄。注意：当传入的参数为NULL，则代表挂起任务自身（当前运行的任务）。
   ​    vTaskResume(TaskHandle_t  vTaskResume) 形参为vTaskResume，恢复指定任务的任务句柄。注意：任务无论被挂起多少次，只需要调用vTaskResume()恢复一次，就可以继续运行。且被恢复的任务进入到就绪态。
