@@ -1,4 +1,21 @@
+---
+title: OSI七层传输协议模型
+date: 2023-09-01
+tags: ['星海']
+categories: 星海
+id: OSI七层传输协议模型
+---
+<!-- more -->
 # OSI七层传输协议模型
+# 目录
+  - [1. 应用层（Application Layer）](#section.1)<a name="context.1"> </a>
+  - [2. 表示层（Presentation Layer）](#section.2)<a name="context.2"> </a>
+  - [3. 会话层（Session Layor）](#section.3)<a name="context.3"> </a>
+  - [4. 传输层（Transport Layer）](#section.4)<a name="context.4"> </a>
+  - [5. 网络层（Network Layer）](#section.5)<a name="context.5"> </a>
+  - [6. 数据链路层（Data Link Layer）](#section.6)<a name="context.6"> </a>
+  - [7. 物理层（Physical Layer）](#section.7)<a name="context.7"> </a>
+------------------------------------------------  
 
 ​        ==为了完成不同计算机或网络或架构之间的成功通信，国际标准化组织提出了OSI七层模型，该模型(从上到下)包括了应用层、表示层、会话层、传输层、网络层、数据链路层、物理层==。
 
@@ -6,13 +23,13 @@
 
 ​        ==每一层其实际上都是一个协议包==，比如说当我们要提起应用层的时候，并不仅仅指计算机的应用程序（谷歌、火狐等APP），还包含了大量的应用层协议，应用层协议能使应用层程序在网络中够正确的运行，记下来我们一起来看下OSI的七层模型。
 
-### 1. 应用层（Application Layer）
+### [1. 应用层（Application Layer）](#context.1)<a name="section.1"> </a>
 
 ​         应用层是由网络应用程序使用的，离用户最近的一层。应用层通过各种协议（FTP——文件传输协议；HTTP/S——网上冲浪协议；SMTP——邮件传输协议；Telnet——与虚拟端之间的通信协议），为网络应用提供服务（网络应用是指使用会互联网的计算机应用），==**执行用户活动**==。
 
 <img src="https://pic3.zhimg.com/v2-f9bba83371f1c5e1f6dc038121874616_r.jpg" alt="img" style="zoom:80%;" />
 
-### 2. 表示层（Presentation Layer）
+### [2. 表示层（Presentation Layer）](#context.2)<a name="section.2"> </a>
 
 表示层从应用层接受数据，这些数据是以字符和数字的形式出现的（如：Chinese、666），表示层将这些字符和数据，转换成机器能够理解的二进制格式（1001 0110），==表示层的这个功能称为“翻译”功能，即把人类的语言翻译成机器能理解的语言==。在传输数据之前，表示层减少了用来表示原始数据的比特数，也就是将原始数据进行了压缩，数据压缩减少了数据原始数据所需的空间，随着文件大小的减少，它就可以在很短的时间内到达目的地，数据压缩对实时视频和音频传输有很大的帮助，以保持完整性的数据传输前的数据加密。
 
@@ -22,7 +39,7 @@
 
 <img src="https://pic3.zhimg.com/v2-c892fedc700269c1109bb35d61317ad2_r.jpg" alt="img" style="zoom:80%;" />
 
-### 3. 会话层（Session Layor）
+### [3. 会话层（Session Layor）](#context.3)<a name="section.3"> </a>
 
 ​         在讲会话层之前，我们首先假设下，如果你计划办一个聚会，为确保每一个活动能顺利进行，则需要建立一个流程（装扮环境、烧菜、清洁、告别）。
 
@@ -44,7 +61,7 @@
 
 <img src="https://pic1.zhimg.com/v2-56fb685108ab139605830dc347ca61d0_r.jpg" alt="img" style="zoom:80%;" />
 
-### 4. 传输层（Transport Layer）
+### [4. 传输层（Transport Layer）](#context.4)<a name="section.4"> </a>
 
 在会话层之下时传输层。传输层通过分段（Segmentation）、流量控制（Flow Control）和差错控制（Error Control）来控制通信的可靠性。
 
@@ -76,7 +93,7 @@ UDP比TCP更快，因为它不会提供任何关于数据是否真正交付的�
 
 ==总结一下，传输层涉及到分段（Segmentation）、流量控制（Flow Control）、差错控制（Error Control）、面向连接（TCP）和无连接（UDP）的传输==。
 
-### 5. 网络层（Network Layer）
+### [5. 网络层（Network Layer）](#context.5)<a name="section.5"> </a>
 
 传输层将数据传递到网络层，网络层用于将接收到的数据段从一台计算机传输到不同网络中的另一台计算机，网络层的数据单元称为数据包（Packets），网络层的功能是进行逻辑寻址（Logical Addressing）、路由（Rout）和路径确定（Path Determination）。
 
@@ -98,7 +115,7 @@ UDP比TCP更快，因为它不会提供任何关于数据是否真正交付的�
 
 <img src="https://pic1.zhimg.com/v2-3a8631f027f9810e20c0c5753cec52f8_r.jpg" alt="img" style="zoom:80%;" />
 
-### 6. 数据链路层（Data Link Layer）
+### [6. 数据链路层（Data Link Layer）](#context.6)<a name="section.6"> </a>
 
 ==数据链路层从网络层接收数据包，数据包包含了发送方和接受方的IP地址。有两种寻址方式：逻辑寻址和物理寻址==。逻辑寻址在网络层已经完成，即在数据段（Segment）中添加了发送方和接收方的IP地址，以形成IP数据包。而物理寻址就是在数据链路层中完成的，其方法就是在IP数据包中添加发送方计算机和接收方计算机的物理地址：MAC，从而形成一个数据帧。MAC地址是由计算机制造商嵌入到计算机的，也是唯一的，我们的手机也有一个唯一的MAC地址。
 
@@ -114,7 +131,7 @@ UDP比TCP更快，因为它不会提供任何关于数据是否真正交付的�
 
 <img src="https://pic1.zhimg.com/v2-08c27e18439ac2e7bdf0f773c9c92c34_r.jpg" alt="img" style="zoom:80%;" />
 
-### 7. 物理层（Physical Layer）
+### [7. 物理层（Physical Layer）](#context.7)<a name="section.7"> </a>
 
 到现在为止，应用的“行为动作”已经通过传输层进行了分割，变成网络层的数据包和数据链路层的数据“帧”，现在是一种二进制序列了，最后在物理层将这些二进制序列转换成信号并在本地介质（铜缆、光纤、无线信号等）上传输，并在目标计算机应用层上显示数据。
 
