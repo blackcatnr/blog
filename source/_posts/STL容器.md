@@ -1,15 +1,47 @@
+---
+title: STL容器
+date: 2023-09-16
+tags: ['星海']
+categories: 星海
+id: STL容器
+---
+<!-- more -->
 # STL容器
+# 目录
+  - [1.vector容器](#section.1)<a name="context.1"> </a>
+      - [vector容器和普通数组的区别：](#section.2)<a name="context.2"> </a>
+      - [vector的构造函数](#section.3)<a name="context.3"> </a>
+      - [vector的赋值操作](#section.4)<a name="context.4"> </a>
+      - [vector的容量与大小](#section.5)<a name="context.5"> </a>
+      - [vector的插入和删除](#section.6)<a name="context.6"> </a>
+      - [vector数据存取](#section.7)<a name="context.7"> </a>
+      - [vector互换容器](#section.8)<a name="context.8"> </a>
+      - [vector预留空间](#section.9)<a name="context.9"> </a>
+  - [2.deque容器](#section.10)<a name="context.10"> </a>
+      - [创建deque容器的几种方式：](#section.11)<a name="context.11"> </a>
+      - [deque容器的函数](#section.12)<a name="context.12"> </a>
+      - [assign函数使用](#section.13)<a name="context.13"> </a>
+      - [insert员函数使用](#section.14)<a name="context.14"> </a>
+      - [max_size员函数使用](#section.15)<a name="context.15"> </a>
+      - [emplace_front()、emplace_back()函数使用](#section.16)<a name="context.16"> </a>
+  - [3.List容器](#section.17)<a name="context.17"> </a>
+  - [4.map容器](#section.18)<a name="context.18"> </a>
+      - [不经常使用函数：](#section.19)<a name="context.19"> </a>
+      - [map中的insert的使用](#section.20)<a name="context.20"> </a>
+      - [1.map中的swap用法](#section.21)<a name="context.21"> </a>
+      - [2.map中的sort问题](#section.22)<a name="context.22"> </a>
+------------------------------------------------  
 
-### 1.vector容器
+### [1.vector容器](#context.1)<a name="section.1"> </a>
 
 功能：vector容器的功能和数组非常相似，使用时可以把它看成一个数组。
 
-##### vector容器和普通数组的区别：
+##### [vector容器和普通数组的区别：](#context.2)<a name="section.2"> </a>
 
 1.数组是静态的，长度不可以改变，而vector可以动态扩展，增加长度。（注：==动态扩展并不是在原空间之后续接新空间，而是找到比原来更大的内存空间，将原数据拷贝到新空间，释放原空间==）
 2.数组内数据通常存储在栈上，而vector中数据存储在堆上。
 
-##### vector的构造函数
+##### [vector的构造函数](#context.3)<a name="section.3"> </a>
 
 函数原型：
 1.vector<T>v;  //使用模板类，默认构造函数
@@ -17,7 +49,7 @@
 3.vector(n,elem);  //将n个elem拷贝给本身|
 4.vector(const  vector &v);   //拷贝构造函数
 
-##### vector的赋值操作
+##### [vector的赋值操作](#context.4)<a name="section.4"> </a>
 
 函数原型：
 1.vector&  operator=(const   vector &v); //重载赋值运算符
@@ -48,7 +80,7 @@ void text02()
 
 <img src="https://img-blog.csdnimg.cn/690b220bfcd547e092c8d8061dfce699.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA77yG5LiN6YCd,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" style="zoom:80%;" />
 
-##### vector的容量与大小
+##### [vector的容量与大小](#context.5)<a name="section.5"> </a>
 
 函数原型：
 1.empty();  //判断容器是否为空，为空返回1，否则返回0
@@ -93,7 +125,7 @@ void text03()
 
 <img src="https://img-blog.csdnimg.cn/da5bb81203234ad89e386e948fb6b7ee.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA77yG5LiN6YCd,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img" style="zoom:80%;" />
 
-##### vector的插入和删除
+##### [vector的插入和删除](#context.6)<a name="section.6"> </a>
 
 函数原型：
 1.push_back(ele);   //尾部插入元素ele
@@ -136,7 +168,7 @@ void text04()
 
 <img src="https://img-blog.csdnimg.cn/9cf4254ab7bc4a1999572b4e6572add4.png" alt="在这里插入图片描述" style="zoom:80%;" />
 
-##### vector数据存取
+##### [vector数据存取](#context.7)<a name="section.7"> </a>
 
 函数原型：
 1.at(int idx);  //返回索引idx所指的数据
@@ -174,7 +206,7 @@ void text05()
 
 <img src="https://img-blog.csdnimg.cn/0c96a078b3704d2f9aa3573df1cdf9ba.png" alt="在这里插入图片描述" style="zoom:80%;" />
 
-##### vector互换容器
+##### [vector互换容器](#context.8)<a name="section.8"> </a>
 
 函数原型：
 swap(v);  //容器v和当前容器互换
@@ -201,7 +233,7 @@ void text06_1()
 
 <img src="https://img-blog.csdnimg.cn/5927604994cc47b581df59236d4a4382.png" alt="在这里插入图片描述" style="zoom:80%;" />
 
-##### vector预留空间
+##### [vector预留空间](#context.9)<a name="section.9"> </a>
 
 功能：减少vector在动态扩容时的扩展次数，每次使用push_back(v)时，如果容器v的大小要超过v的容量时，系统就会对v进一次动态扩容，至于扩大多少空间，由系统决定。
 
@@ -210,7 +242,7 @@ reserve(int  len);   //容器预留len个元素长度，也就是把容量扩为
 
 
 
-### 2.deque容器
+### [2.deque容器](#context.10)<a name="section.10"> </a>
 
 deque----双端队列容器
 deque和vector有很多的相似之处，比如：
@@ -221,7 +253,7 @@ deque和vector有很多的相似之处，比如：
 1.==deque还擅长在序列头部添加和删除元素==，耗费时间复杂度为O(1)。
 2.==deque容器中存储元素并不能保证所有元素都存储到连续的内存空间中==。
 
-##### 创建deque容器的几种方式：
+##### [创建deque容器的几种方式：](#context.11)<a name="section.11"> </a>
 
 1.创建一个没有任何元素的空deque容器：
 
@@ -256,7 +288,7 @@ std::deque<int> d2(d1);
 
 必须保证新旧容器存储的元素类型一致。
 
-##### deque容器的函数
+##### [deque容器的函数](#context.12)<a name="section.12"> </a>
 
 |       函数        |                           函数功能                           |
 | :---------------: | :----------------------------------------------------------: |
@@ -284,7 +316,7 @@ std::deque<int> d2(d1);
 | emplace_front（） | 在容器头部生成一个元素。和push_front()的区别是，该函数直接在容器头部构造元素，省去了复制移动元素的过程。 |
 | emplace_back（）  | 在容器尾部生成一个元素。和push_back（）的区别是，该函数直接在容器尾部构造元素，省去复制移动元素的过程。 |
 
-##### assign函数使用
+##### [assign函数使用](#context.13)<a name="section.13"> </a>
 
 在同一程序中被多次调用后，该函数将销毁先前元素的值，并将新的元素集重新分配给容器。
 1.使用:
@@ -364,7 +396,7 @@ The deque elements: 10 10 10 10 10
 The deque1 elements: 10 10 10 10
 ```
 
-##### insert员函数使用
+##### [insert员函数使用](#context.14)<a name="section.14"> </a>
 
 三种使用方法：
  		1.通过在一个为位置插入新元素val来扩展双端队列。
@@ -466,12 +498,12 @@ int main()
 Deque contains: 1 10 10 2 3 4 5
 ```
 
-##### max_size员函数使用
+##### [max_size员函数使用](#context.15)<a name="section.15"> </a>
 
 该函数返回双端队列容器可以容纳的最大元素数。
 deque_name.max_size()
 
-##### emplace_front()、emplace_back()函数使用
+##### [emplace_front()、emplace_back()函数使用](#context.16)<a name="section.16"> </a>
 
 此函数用于将新元素插入到双端队列容器，并将新元素添加到双端队列的开头或者结尾。
 
@@ -562,7 +594,7 @@ Hi this is geeksforgeeks
 
 
 
-### 3.List容器
+### [3.List容器](#context.17)<a name="section.17"> </a>
 
 list容器，又称双向链表容器。该容器底层是以双向链表的形式实现的。
 list容器可以在序列已知的任何位置快速插入或删除元素（时间复杂度O（1））。并且在list容器中移动元素，也比其他容器效率高。==不能像array和vector一样通过位置直接访问元素。只有运用迭代器，才能访问list容器中存储的各个元素==。
@@ -764,7 +796,7 @@ int main()
 
 
 
-### 4.map容器
+### [4.map容器](#context.18)<a name="section.18"> </a>
 
 map中所有元素都是pair，pair中的第一个元素为key（键值），起到索引作用，第二个元素为value（实值）；所有的元素都会根据元素的键值自动排序（键值小到大排序），map/multimap属于关联式容器，底层实现是二叉树（红黑树）。
 map和multimap的区别：
@@ -783,7 +815,7 @@ map和multimap的区别：
 
 
 
-##### 不经常使用函数：
+##### [不经常使用函数：](#context.19)<a name="section.19"> </a>
 
 count()  //返回指定元素出现的次数
 equal_range()      //返回特殊条目的迭代器对
@@ -794,7 +826,7 @@ erase()   //删除一个元素  ；erase(start，last)删除区间（start，las
 
 
 
-##### map中的insert的使用
+##### [map中的insert的使用](#context.20)<a name="section.20"> </a>
 
 插入的三种方式：
 
@@ -813,11 +845,11 @@ void test（）
 
  
 
-##### 1.map中的swap用法
+##### [1.map中的swap用法](#context.21)<a name="section.21"> </a>
 
 map中的swap不是一个容器中的元素交换，而是两个容器所有元素的交换。
 
-##### 2.map中的sort问题
+##### [2.map中的sort问题](#context.22)<a name="section.22"> </a>
 
 map中的元素是自动按照key升序排序的，所以不能直接用sort函数。
 
